@@ -29,7 +29,31 @@ class ViewController: UIViewController {
         tableView.frame = self.view.bounds
         module.tableView = tableView
         module.viewController = self
+        self.tableView.rowHeight = UITableView.automaticDimension
+
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        tableView.frame = self.view.bounds
+
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.view.layoutSubviews()
+
+           super.viewWillTransition(to: size, with: coordinator)
+           if UIDevice.current.orientation.isLandscape {
+           
+               print("Landscape")
+              self.tableView.reloadData()
+
+           } else {
+            self.tableView.reloadData()
+
+               print("Portrait")
+           }
+       }
+    
     
     func loadData() {
         network.getNews { [weak self] (error, module) in

@@ -17,7 +17,8 @@ class NewsDetailViewController: UIViewController {
         news?.module = article
     }
     
-
+  
+    
     override func loadView() {
         super.loadView()
         self.view = NewsDetailView(frame: self.view.bounds)

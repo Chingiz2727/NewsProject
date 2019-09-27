@@ -76,7 +76,7 @@ extension NewsViewModel:UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid) as! NewsTableViewCell
         guard let article = module?[indexPath.row] else {return UITableViewCell()}
         cell.data = article
-        
+        cell.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         return cell
     }
     
